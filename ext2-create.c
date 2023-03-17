@@ -412,6 +412,7 @@ void write_inode_table(int fd) {
 	permissions. The group and other should only have read permission. Your hello-world file should only be 12
 	bytes long and contain “Hello world” followed by a newline. */
 
+	char const content[] = "Hello world\n";
 	struct ext2_inode hello_world_inode = {0};
 	hello_world_inode.i_mode = EXT2_S_IFREG
 								| EXT2_S_IRUSR
@@ -419,7 +420,7 @@ void write_inode_table(int fd) {
 								| EXT2_S_IRGRP
 								| EXT2_S_IROTH;
 	hello_world_inode.i_uid = 1000;
-	hello_world_inode.i_size = 1024;
+	hello_world_inode.i_size = strlen(content);
 	hello_world_inode.i_atime = current_time;
 	hello_world_inode.i_ctime = current_time;
 	hello_world_inode.i_mtime = current_time;
@@ -439,7 +440,7 @@ void write_inode_table(int fd) {
 						| EXT2_S_IRGRP
 						| EXT2_S_IROTH;
 	hello_inode.i_uid = 1000;
-	hello_inode.i_size =  strlen(target_path);;
+	hello_inode.i_size =  strlen(target_path);
 	hello_inode.i_atime = current_time;
 	hello_inode.i_ctime = current_time;
 	hello_inode.i_mtime = current_time;
