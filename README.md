@@ -18,20 +18,24 @@ To build the program, run
 
 Show how to compile, mount, and example output of `ls -ain` your mounted filesystem.
 
-    mkdir mnt
-    sudo mount -o loop cs111-base.img mnt
-    cd mnt
-    ls -ain 
-
-
-total 7
-    2 drwxr -xr-x 3 0 0 1024 .
-                            ..
-    13 lrw-r--r-- 1 1000 1000 11 hello -> hello -world
-    12 -rw-r--r-- 1 1000 1000 12 hello -world
-    11 drwxr -xr-x 2 0 0 1024 lost+found
+    > mkdir mnt
+    > sudo mount -o loop cs111-base.img mnt
+    > cd mnt
+    > ls -ain 
+    total 7
+        2 drwxr -xr-x 3 0 0 1024 .
+                                ..
+        13 lrw-r--r-- 1 1000 1000 11 hello -> hello -world
+        12 -rw-r--r-- 1 1000 1000 12 hello -world
+        11 drwxr -xr-x 2 0 0 1024 lost+found
 
 ## Cleaning up
 
-Explain briefly how to unmount the filesystem, remove the mount directory, and
-clean up all binary files.
+To unmount the file system,
+
+    sudo umount mnt
+    rm -r mnt
+
+To clean up all binary files,
+
+    make clean
